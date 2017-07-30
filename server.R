@@ -7,11 +7,17 @@
 library(shiny)
 
 # Read the file, select the data
-library(Hmisc)
-Ruff1 <- spss.get(file='RFFT reference sample.sav')
-Ruff1 <- Ruff1[Ruff1$Age >= 40,]   # For age <= 40, we do not have low and high education levels
-Ruff1 <- Ruff1[Ruff1$ISCED != 0,]  # ISCED 0 is not education except Kindergarten, and does
-                                   # no seem to fit in the picture (autodidacts?)
+airlines <- read.csv("airlines.csv")
+airports  <- read.csv("airports.csv")
+flights <- read.csv("flights.csv")
+
+# Look at data
+dim(airlines)
+dim(airports)
+dims(flights)
+names(airlines)
+names(airports)
+names(flights)
 
 # Build the model
 fit <- lm(Unique ~ Age + ISCED, data=Ruff1)
